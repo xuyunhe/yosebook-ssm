@@ -1,0 +1,83 @@
+body {
+	font-size: 10pt;
+	color: #404040;
+	font-family: "microsoft yahei";
+}
+
+table {
+	font-size: 10pt;
+	margin-top: 10px;
+	margin-left: 50px;
+	width: 680px;
+}
+input{
+	font-family: "microsoft yahei";
+	height: 31px;
+	border: 1px solid #ccc;
+	padding: 4px 5px;
+	border-radius: 4px;
+	margin-bottom: 4px;
+}
+
+select{
+	font-family: "microsoft yahei";
+	height: 31px;
+	border: 1px solid #ccc;
+	padding: 4px 5px;
+	border-radius: 4px;
+}
+ul{
+	margin-top:24px;
+}
+td {
+	height: 25px;
+}
+
+.tp {
+	border: 1px solid #dcdcdc;
+	float: left;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin: 10px;
+}
+
+.btn {
+	border: 0;
+	width: 142px;
+	height: 33px;
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: 900;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 32px;
+	color: #fff;
+}
+
+.btn1 {
+	/* background: url(/yosebook/images/hong_2_btn.jpg) left top
+		no-repeat; */
+	margin-top: 15px;
+	background: #D23524;
+	width: 145px;
+	height:38px;
+	border: 1px solid #D23524;
+	border-radius: 5px;
+}
+
+.btn2 {
+	/* background: url(/yosebook/images/hong_1_btn.jpg) left top
+		no-repeat; */
+	margin-top: 15px;
+	background: #ab2b1d;
+	width: 145px;
+	height:38px;
+	border: 1px solid #ab2b1d;
+	border-radius: 5px;
+	cursor: pointer;
+}

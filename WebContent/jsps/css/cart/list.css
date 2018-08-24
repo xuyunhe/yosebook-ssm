@@ -1,0 +1,144 @@
+table {
+	font-size: 10pt;
+	border-color: #efeae5;
+	border-style: solid;
+	border-width: 5px;
+	color: #404040;
+	font-family: "microsoft yahei";
+	border-radius: 5px;
+}
+
+td {
+	border-color: #efeae5;
+	border-style: solid;
+	border-width: 0;
+	border-bottom-width: 1px;
+	padding: 10px;
+}
+input[type="checkbox"]:hover{
+	cursor:pointer;
+}
+.jian {
+	background: #ddd;
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	margin: 0;
+	border:1px solid #ddd;
+}
+
+.jian:HOVER {
+	background: #bbb;
+	cursor:pointer;
+}
+
+.jia {
+	background: #ddd;
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	margin: 0;
+	border:1px solid #ddd;
+}
+
+.jia:HOVER {
+	background: #bbb;
+	cursor:pointer;
+}
+
+.jiesuan {
+	background: url(/yosebook-ssm/images/icon.png) no-repeat;
+	display: inline-block;
+	background-position: 0 -35px;
+	height: 40px;
+	width: 190px;
+	margin: 0;
+	border-radius: 5px;
+}
+
+.kill {
+	background: url(/yosebook-ssm/images/icon.png) no-repeat;
+	display: inline-block;
+	background-position: 0 -480px;
+	height: 40px;
+	width: 190px;
+}
+
+.jiesuan:HOVER {
+	background: url(/yosebook-ssm/images/icon.png) no-repeat;
+	display: inline-block;
+	background-position: 0 -75px;
+	height: 40px;
+	width: 190px;
+	cursor:pointer;
+	poorfish: expression(this.onclick = function jiesuan(){return true
+}
+
+);
+}
+.quantity {
+	width: 30px;
+	height: 24px;
+	text-align: center;
+	margin: 0;
+	border:1px solid #ddd;
+}
+
+a {
+	text-decoration: none;
+	color: #018BD3;
+}
+
+a:visited {
+	color: #018BD3;
+}
+
+a:hover {
+	color: #FF6600;
+	text-decoration: underline;
+}
+
+a.linkImage {
+	border: 1px solid #ffffff;
+	display: inline-block;
+}
+
+a.linkImage:HOVER {
+	border: 1px solid #d0d0d0;
+	display: inline-block;
+}
+
+a.linkImage:active {
+	border: 1px dotted #404040;
+	display: inline-block;
+}
+
+.price_n {
+	color: #c30;
+	font-weight: bold;
+	padding-right: 10px;
+	font-family: Arial;
+}
+
+.price_t {
+	color: #c30;
+	font-weight: bold;
+	padding-right: 10px;
+	font-family: Arial;
+	font-size: 15pt;
+}
+
+.spanEmpty {
+	margin-top: 50px;
+	font-size: 24px;
+	font-weight: 900;
+}
+
+.tdBatchDelete {
+	border-top-width: 5px;
+	border-bottom-width: 0px;
+}
+
+.tdTotal {
+	border-top-width: 5px;
+}

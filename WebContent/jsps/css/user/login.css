@@ -1,0 +1,124 @@
+body {
+	background: #f2f2f2;
+	color: #999;
+	font-size: 12px;
+}
+
+header {
+	margin-left: 245px;
+	margin-top: 23px;
+}
+
+header img.welcome {
+	border-left: 1px solid #ccc;
+}
+
+#content input.txtUsername, #content input.txtUserpwd {
+	/*宽度，右内边距，边框，背景*/
+	width: 280px;
+	padding-left: 23px;
+	margin-right: 13px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 30px;
+	background: url(/yosebook-ssm/images/user.png) no-repeat left center;
+}
+
+#content input.txtUserpwd {
+	background-image: url(/yosebook-ssm/images/pwd.png);
+}
+
+#content input.txtVerifyCode {
+	width: 140px;
+	padding-left: 23px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	height: 30px;
+}
+
+#content table {
+	background: #fff;
+}
+#content table tr{
+	height: 30px;
+}
+#btnLogin {
+	width: 307px;
+	height: 34px;
+	background: url(/yosebook-ssm/images/login_all_bg.png) no-repeat 0 -95px;
+	border: 0;
+	border-radius: 5px;
+	margin-top: 15px;
+}
+
+#btnLogin:hover {
+	background-position: 0 -61px;
+	cursor: pointer;
+}
+
+#content {
+	width: 828px;
+	height: 412px;
+	margin: 0 auto;
+	margin-top: 30px;
+	background: #e8e8e8;
+	padding: 5px;
+	padding-right: 20px;
+	border-radius: 5px;
+}
+
+#btnRegist {
+	width: 100px;
+	height: 30px;
+	background-color: #4d4;
+	border: 0;
+	border-radius: 5px;
+	margin-bottom: 27px;
+}
+
+#btnRegist:hover {
+	background-color: #4c0;
+	cursor: pointer;
+}
+a{
+	color:blue;
+	text-decoration: none;
+}
+a:hover{
+	color:green;
+}
+footer {
+	margin-top: 50px;
+}
+footer img{
+    width:90px;
+    height:35px;
+    border-radius: 3px;
+}
+footer p {
+	text-align: center;
+}
+
+#chkAuto, #chkSafe {
+	cursor: pointer;
+}
+
+.lbAuto {
+	cursor: pointer;
+}
+
+label.error {
+	color: #cc3300;
+	font-family: "microsoft yahei";
+	font-weight: 600;
+	margin-left: 10px;
+}
+
+#vCode {
+	margin-left: 13px;
+	margin-bottom: 4px;
+	vertical-align: middle;
+	width: 122px;
+	height: 33px;
+	border-radius: 3px;
+}

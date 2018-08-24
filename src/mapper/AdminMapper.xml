@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyust.admin.dao.AdminDao">
+	<!-- first is last，后台管理员的登录 -->
+	<!-- 传递的参数类型是map即使keyvalue类型-->
+	<select id="findByAdminnameAndAdminpwd" parameterType="map"
+		resultType="com.tyust.admin.entity.Admin">
+		select *
+		from
+		t_admin
+		where
+		adminname=#{adminname} and adminpwd=#{adminpwd}
+	</select>
+</mapper>

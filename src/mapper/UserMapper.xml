@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyust.dao.UserDao">
+	<resultMap id="UserResultMap" type="com.tyust.entity.User">
+		<id column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="loginname" property="loginname" jdbcType="VARCHAR" />
+		<result column="loginpass" property="loginpass" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="CHAR" />
+		<result column="activationCode" property="activationCode"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 1根据用户id和登录密码进行查找 ，返回值是布尔 -->
+
+
+	<select id="findByUidAndLoginpass" parameterType="map"
+		resultType="boolean">
+		select count(*)
+		from t_user
+		where uid=#{uid} and
+		loginpass=#{oldPass}
+	</select>
+	<!-- 2用户更新密码 -->
+	<update id="updateLoginpass" parameterType="map">
+		update t_user
+		set
+		loginpass=#{newPass}
+		where uid=#{uid}
+	</update>
+	<!-- 3根据用户姓名和密码进行登录 -->
+	<select id="findByLoginnameAndLoginpass" parameterType="map"
+		resultType="com.tyust.entity.User">
+		select *
+		from t_user
+		where loginname=#{loginname} and
+		loginpass=#{loginpass}
+	</select>
+	<!-- 4根据激活码进行查询用户 -->
+	<select id="findByCode" parameterType="string" resultType="com.tyust.entity.User">
+		select *
+		from t_user
+		where activationCode=#{activationCode}
+	</select>
+	<!-- 5根据激活码区吧账户激活，及吧数据库中的User表中的state状态修改为1 -->
+	<update id="updateStatus" parameterType="map">
+		update t_user
+		set
+		status=#{status}
+		where uid=#{uid}
+	</update>
+	<!-- 6根据ajax区验证注册的用户名时候存在，数据库中要求用户名唯一 -->
+	<!-- 数据库中count(*)也是可以的返回1，等待验证.............. -->
+	<select id="ajaxValidateLoginname" parameterType="string"
+		resultType="boolean">
+		select count(1)
+		from t_user
+		where loginname=#{loginname}
+	</select>
+	<!-- 7验证用户的邮箱时候已经注册，数据库中要求唯一 -->
+	<select id="ajaxValidateEmail" parameterType="string"
+		resultType="boolean">
+		select count(1)
+		from t_user
+		where email=#{email}
+	</select>
+	<!-- 8用户的注册，激活码是什么鬼？？？？？？ -->
+	<insert id="add" parameterType="com.tyust.entity.User">
+		insert into t_user
+		(uid,loginname,loginpass,email,status,activationCode)
+		values
+		(#{uid},#{loginname},#{loginpass},#{email},#{status},#{activationCode})
+	</insert>
+</mapper>

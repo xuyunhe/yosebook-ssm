@@ -1,0 +1,51 @@
+body {
+	background: #4E4E4E;
+	font-family: "microsoft yahei";
+}
+/* ::-webkit-scrollbar{
+	width:10px;
+}
+::-webkit-scrollbar-track-piece{
+	background: #4E4E4E;
+} */
+table {
+	font-size: 14px;
+	border:0;
+	width: 65%;
+	background: #ccc;
+	border-radius: 6px;
+}
+th{
+	border:0px;
+}
+td {
+	padding: 5px;
+	padding-left:15px;
+	padding-right:15px;
+	border:0px;
+}
+
+.secondCol{
+	border-left: 1px solid #888;
+	border-right: 1px solid #888;
+}
+.trTitle {
+	border-radius: 6px;
+	border:0;
+	background: #555;
+	color: #fff;
+}
+
+.trOneLevel {
+	background-color: #fff;
+	font-weight: 900;
+}
+
+.captionAddOneLevel {
+	line-height: 30px;
+}
+
+.trTwoLevel {
+	text-align: right;
+	font-size: 10pt;
+}

@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	background: #4E4E4E;
+}
+
+section {
+	width: 520px;
+	height: 280px;
+	background: #eee;
+	border-radius: 5px;
+	margin: 100px auto;
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+input, select, textarea {
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-family: "microsoft yahei";
+}
+
+input, select {
+	height: 25px;
+}
+
+select:hover {
+	cursor: pointer;
+}
+
+input[type="button"], input[type="submit"] {
+	background: #999;
+	border-radius: 5px;
+	border: 1px solid #999;
+	heoght: 40px;
+	font-family: "microsoft yahei";
+	margin-top:15px;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+	background: #666;
+	cursor: pointer;
+}

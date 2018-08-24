@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--1 namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 
+注意：使用mapper代理方法开发，namespace有特殊重要的作用，并且是全限定类名
+-->
+<mapper namespace="com.tyust.dao.CategoryDao">
+
+  <resultMap id="CategoryResultMap" type="com.tyust.entity.Category" >
+   <id column="cid" property="cid" jdbcType="VARCHAR" />
+   <result column="cname" property="cname" jdbcType="VARCHAR" />
+   <result column="desc" property="desc" jdbcType="VARCHAR" />
+   <association column="pid" property="parent" javaType="com.tyust.entity.Category">
+   	<result column="pid" property="cid"/>
+   </association>
+   <collection column="cid" property="children" select="findByParent"/>
+  </resultMap>
+  <!-- 2根据分类的id进行查询分类信息，返回集合 -->
+  <select id="load" parameterType="string" resultMap="CategoryResultMap">
+  	select *
+  	from 
+  		t_category 
+  	where 
+  		cid=#{cid}
+  </select>  
+  <!-- 3根据分类id和产品id对分类信息进行查询； -->
+  <select id="findByParent" parameterType="string" resultMap="CategoryResultMap">
+  	select *
+  	from 
+  		t_category 
+  	where 
+  		pid=#{cid} 
+  	order by
+  		orderBy
+  </select>
+  <!-- 4查询产品id为null的分类信息 -->
+  <select id="findParent" resultMap="CategoryResultMap">
+  	select * 
+  		from t_category 
+  		where pid is null 
+  		order by orderBy
+  </select>
+  <!-- 5查询某份产品 的id在某一分类下的总数-->
+  <select id="findChildrenByParent" parameterType="string" resultType="int">
+  	select count(*) 
+  		from t_category 
+  		where pid=#{value}
+  </select>
+ <!-- 6增加分类 -->
+  <insert id="add" parameterType="map">
+  	insert into t_category 
+  		(cid,cname,pid,`desc`) 
+		values
+		(#{cid},#{cname},#{pid},#{desc})
+  </insert>
+   <!-- 7更新分类，传入的是map集合 -->
+  <update id="edit" parameterType="map">
+  	update t_category 
+  		set cname=#{cname},pid=#{pid},`desc`=#{desc} 
+  		where cid=#{cid}
+  </update>
+  <!-- 8根据分类目录的id对分类进行删除，是单个的删除； -->
+  <delete id="delete" parameterType="string">
+  	delete 
+  		from t_category 
+  		where cid=#{value}
+  </delete>
+	
+</mapper>
+
+

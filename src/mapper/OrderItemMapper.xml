@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyust.dao.OrderItemDao">
+  <resultMap id="OrderItemResultMap" type="com.tyust.entity.OrderItem" >
+    <id column="orderItemId" property="orderItemId" jdbcType="CHAR" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="subtotal" property="subtotal" jdbcType="DECIMAL" />
+	<association property="book" column="bid" select="com.tyust.dao.BookDao.findByBid"/>
+  	<association property="order" column="oid" select="com.tyust.dao.OrderDao.load"/>
+  </resultMap>
+  
+  <select id="findByOid" parameterType="string" resultMap="OrderItemResultMap">
+  	select 
+  		* 
+  	from 
+  		t_orderitem 
+  	where 
+  		oid=#{oid}
+  </select>
+  
+  <select id="load" parameterType="string" resultMap="OrderItemResultMap">
+  	select *
+  	from 
+  		t_orderitem
+  	where 
+  		orderItemId=#{orderItemId}
+  </select>
+  <!--3 正佳增加订单向 -->
+  <insert id="addOrderItem" parameterType="list">
+  	insert into 
+  		t_orderitem
+  		(
+  		orderItemId,
+  		quantity,
+  		subtotal,
+  		bid,
+  		bname,
+  		currPrice,
+  		image_b,
+  		oid
+  		)
+  	values
+  	<foreach collection="list" item="item" index="index"  separator=",">
+  		(
+  		#{item.orderItemId},
+  		#{item.quantity},
+  		#{item.subtotal},
+  		#{item.bid},
+  		#{item.bname},
+  		#{item.currPrice},
+  		#{item.image_b},
+  		#{item.oid}
+  		)
+  	</foreach>
+  </insert>
+  
+</mapper>

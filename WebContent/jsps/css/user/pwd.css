@@ -1,0 +1,90 @@
+body {
+	font-size: 10pt;
+	color: #404040;
+	font-family: "microsoft yahei";
+}
+
+.div {
+	width: 520px;
+	margin-left: 250px;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	font-size: 12px;
+	border: 1px solid #D2D3D5;
+	background-color: #f2f2f2;
+	border-radius: 3px;
+}
+
+table {
+	width: 500px;
+	font-size: 10pt;
+	color: #404040;
+	/* margin-left: 20px; */
+	margin: 12px auto;
+	background-color: #eee;
+}
+
+.input {
+	width: 200px;
+	padding-left: 23px;
+	margin-right: 13px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	height: 30px;
+	line-height: 30px;
+}
+/* table td{
+	width: 230px;
+} */
+.inputTd{
+	width: 230px;
+}
+.textTd{
+	width: 120px;
+}
+/* .bc {
+	width: 80px;
+	height: 20px;
+	margin-left: 15px;
+} */
+
+#vCode {
+	width: 100px;
+	height: 32px;
+	margin-left: 1px;
+	vertical-align: middle;
+	border: 2px;
+}
+a:hover{
+	text-decoration: none;
+}
+#verifyCode {
+	width: 80px;
+	margin-bottom: 10px;
+}
+
+#submit{
+	width: 100px;
+	height: 30px;
+	background-color: #8AD744;
+	border: 0;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#submit:hover{
+	background-color: #8AD700;
+	cursor: pointer;
+}
+label.error {
+	color: #cc3300;
+}
+header {
+	margin-left: 246px;
+	margin-top: 19px;
+}
+
+header img.welcome_mdfPwd {
+	border-left: 1px solid #ccc;
+}

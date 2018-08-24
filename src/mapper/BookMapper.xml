@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyust.dao.BookDao">
+	<resultMap id="BookResultMap" type="com.tyust.entity.Book">
+		<id column="bid" property="bid" jdbcType="VARCHAR" />
+		<result column="bname" property="bname" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="currPrice" property="currPrice" jdbcType="DECIMAL" />
+		<result column="discount" property="discount" jdbcType="DECIMAL" />
+		<result column="press" property="press" jdbcType="VARCHAR" />
+		<result column="publishtime" property="publishtime" jdbcType="VARCHAR" />
+		<result column="edition" property="edition" jdbcType="INTEGER" />
+		<result column="pageNum" property="pageNum" jdbcType="INTEGER" />
+		<result column="wordNum" property="wordNum" jdbcType="INTEGER" />
+		<result column="printtime" property="printtime" jdbcType="CHAR" />
+		<result column="booksize" property="booksize" jdbcType="INTEGER" />
+		<result column="paper" property="paper" jdbcType="VARCHAR" />
+		<result column="image_w" property="image_w" jdbcType="VARCHAR" />
+		<result column="image_b" property="image_b" jdbcType="VARCHAR" />
+		<association property="category" column="cid"
+			select="com.tyust.dao.CategoryDao.load" />
+	</resultMap>
+	<select id="selectAll" resultType="Book">
+
+		select * from t_book
+	</select>
+
+	<sql id="select_*_sql">
+		select
+		bid,
+		bname,
+		author,
+		price,
+		currPrice,
+		discount,
+		press,
+		publishtime,
+		edition,
+		pageNum,
+		wordNum,
+		printtime,
+		booksize,
+		paper,
+		cid,
+		image_w,
+		image_b
+		from
+		t_book
+	</sql>
+
+	<sql id="select_count_sql">
+		select
+		count(*)
+		from
+		t_book
+	</sql>
+
+	<sql id="where_sql">
+		<where>
+			<trim suffixOverrides="and">
+				<choose>
+					<when test="cid!=null">
+						cid=#{cid}
+					</when>
+					<when test="bname!=null">
+						bname like concat('%',#{bname},'%')
+					</when>
+					<when test="author!=null">
+						author like concat('%',#{author},'%')
+					</when>
+					<when test="press!=null">
+						press like concat('%',#{press},'%')
+					</when>
+				</choose>
+			</trim>
+		</where>
+	</sql>
+
+	<sql id="order_limit_sql">
+		order by
+		orderBy
+		<if test="ps!=null">
+			<if test="start!=null">
+				limit
+				#{start},#{ps}
+			</if>
+		</if>
+	</sql>
+	<!-- 1查询书籍的总数，加上一些条件判断 -->
+
+	<select id="findBookTr" parameterType="map" resultType="Integer">
+		<include refid="select_count_sql" />
+		<include refid="where_sql" />
+	</select>
+	<!-- 2按照分类目录对书籍进行查询，并且进行排序和分页； -->
+	<select id="findByCategory" parameterType="map" resultMap="BookResultMap">
+		<include refid="select_*_sql" />
+		<include refid="where_sql" />
+		<include refid="order_limit_sql" />
+	</select>
+	<!-- 3根据书籍名字进行查找，返回map集合 -->
+	<select id="findByBname" parameterType="map" resultMap="BookResultMap">
+		<include refid="select_*_sql" />
+		<include refid="where_sql" />
+		<include refid="order_limit_sql" />
+	</select>
+	<!-- 4根据作者进行书籍查询，带有排序和分页； -->
+	<select id="findByAuthor" parameterType="map" resultMap="BookResultMap">
+		<include refid="select_*_sql" />
+		<include refid="where_sql" />
+		<include refid="order_limit_sql" />
+	</select>
+	<!-- 5按照出版社进行查询 -->
+	<select id="findByPress" parameterType="map" resultMap="BookResultMap">
+		<include refid="select_*_sql" />
+		<include refid="where_sql" />
+		<include refid="order_limit_sql" />
+	</select>
+
+	<select id="findByCombination" parameterType="map" resultMap="BookResultMap">
+		<include refid="select_*_sql" />
+		<include refid="where_sql" />
+		<include refid="order_limit_sql" />
+	</select>
+	<!-- 7根据书籍id对书籍进行删除，书籍id是string类型的 -->
+	<delete id="delete" parameterType="string">
+		delete
+		from
+		t_book
+		where
+		bid=#{bid}
+	</delete>
+	<!-- 8对书籍进行更新，参数类型是map -->
+	<update id="edit" parameterType="map">
+		update
+		t_book
+		set
+		bname=#{bname},
+		author=#{author},
+		price=#{price},
+		currPrice=#{currPrice},
+		discount=#{discount},
+		press=#{press},
+		publishtime=#{publishtime},
+		edition=#{edition},
+		pageNum=#{pageNum},
+		wordNum=#{wordNum},
+		printtime=#{printtime},
+		booksize=#{booksize},
+		paper=#{paper},
+		cid=#{cid}
+		where
+		bid=#{bid}
+	</update>
+	<!-- 9增加书籍即使插入书籍，参数类型是map -->
+	<insert id="add" parameterType="map">
+		insert into
+		t_book
+		(
+		bid,
+		bname,
+		author,
+		price,
+		currPrice,
+		discount,
+		press,
+		publishtime,
+		edition,
+		pageNum,
+		wordNum,
+		printtime,
+		booksize,
+		paper,
+		cid,
+		image_w,
+		image_b
+		)
+		values
+		(
+		#{bid},
+		#{bname},
+		#{author},
+		#{price},
+		#{currPrice},
+		#{discount},
+		#{press},
+		#{publishtime},
+		#{edition},
+		#{pageNum},
+		#{wordNum},
+		#{printtime},
+		#{booksize},
+		#{paper},
+		#{cid},
+		#{image_w},
+		#{image_b}
+		)
+	</insert>
+	<!-- 10查询某一分类下的书籍的数量，根据分类查询的，返回值是integer -->
+
+	<select id="findBookCountByCategory" parameterType="string"
+		resultType="Integer">
+		<include refid="select_count_sql" />
+		where
+		cid=#{cid}
+	</select>
+	<!-- 11根据u书籍的id对书籍进行查找 -->
+	<select id="findByBid" parameterType="string" resultMap="BookResultMap">
+		select
+		*
+		from
+		t_book b,
+		t_category c
+		where
+		b.cid=c.cid and b.bid=#{bid}
+	</select>
+
+</mapper>

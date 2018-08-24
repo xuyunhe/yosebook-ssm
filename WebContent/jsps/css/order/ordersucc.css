@@ -1,0 +1,84 @@
+body {
+	font-size: 10pt;
+	color: #404040;
+	font-family: "microsoft yahei";
+}
+
+#linkPay {
+	background: url(/yosebook-ssm/images/bg_btns.png) no-repeat;
+	display: inline-block;
+	background-position: 0 -300px;
+	height: 20px;
+	width: 50px;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: 900;
+	line-height: 20px;
+	border-radius: 3px;
+}
+
+#linkPay:HOVER {
+	background: url(/yosebook-ssm/images/bg_btns.png) no-repeat;
+	display: inline-block;
+	background-position: 0 -330px;
+	height: 20px;
+	width: 50px;
+}
+
+.price_t {
+	color: #c30;
+	font-weight: bold;
+	padding-right: 10px;
+	font-family: Arial;
+	font-size: 15pt;
+}
+
+.div1 {
+	margin-left: 150px;
+	width: 690px;
+	height: 35px;
+	background-color: #efeae5;
+	border-left: 5px solid #efeae5;
+	border-right: 5px solid #efeae5;
+	border-radius: 5px 5px 0 0;
+}
+
+.div2 {
+	margin-left: 150px;
+	width: 690px;
+	height: 300px;
+	border: 5px solid #efeae5;
+	border-radius: 0 0 5px 5px;
+}
+
+.div3 {
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.span1 {
+	margin-top: 10px;
+	margin-left: 10px;
+	height: 25px;
+	font-weight: 900;
+	display: inline-block;
+}
+
+.img {
+	float: left;
+	margin: 30px 100px 0px 30px;
+	width: 150px;
+}
+
+dl {
+	float: left;
+	width: 400px;
+	margin-top: 30px;
+}
+
+dt {
+	font-weight: 900;
+}
